@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batuhan Akar | İletişim</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <h1 class="logo">B<span class="logo-dot">.</span>A</h1>
+            <p class="tagline">Batuhan Akar &mdash; Kişisel Sayfa</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="interests.html">İlgi Alanlarım</a></li>
+            <li><a href="contact.html" class="active">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <span class="label">Sayfa 03</span>
+            <h2>İletişim</h2>
+        </section>
+
+        <section class="contact-grid">
+            <div class="contact-tile">
+                <span class="tile-icon">&#9993;</span>
+                <h3>E-posta</h3>
+                <a href="mailto:batuhanakar@example.com">batuhanakar@example.com</a>
+            </div>
+            <div class="contact-tile">
+                <span class="tile-icon">&#128187;</span>
+                <h3>GitHub</h3>
+                <a href="https://github.com/" target="_blank" rel="noopener">github.com/batuhanakar</a>
+            </div>
+            <div class="contact-tile">
+                <span class="tile-icon">&#128101;</span>
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn Profilim</a>
+            </div>
+        </section>
+
+        <section class="contact-form-wrap">
+            <h3>Mesaj Gönderin</h3>
+            <form class="contact-form" onsubmit="return handleFormSubmit(event)">
+                <div class="field">
+                    <label for="name">Adınız</label>
+                    <input type="text" id="name" name="name" placeholder="Adınızı yazınız" required>
+                </div>
+                <div class="field">
+                    <label for="email">E-posta</label>
+                    <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+                </div>
+                <div class="field">
+                    <label for="message">Mesaj</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Mesajınızı buraya yazabilirsiniz..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Gönder</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Batuhan Akar &mdash; Web Programlama Dersi</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
