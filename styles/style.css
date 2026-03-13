@@ -619,4 +619,89 @@ footer p {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+    /* ── LABORATUVAR 3: İLETİŞİM FORMU ── */
+.contact-container {
+    width: 100%; /* Mobil uyum için */
+    max-width: 650px; /* Dokümandaki 600px önerisine yakın */
+    margin: var(--space-xl) auto; /* Sayfayı ortalar */
+    padding: var(--space-lg); /* İç boşluk */
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-container h2 {
+    text-align: center;
+    color: var(--color-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.contact-container label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+/* Tüm input, select ve textarea elemanları için ortak stil */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container input[type="password"],
+.contact-container select,
+.contact-container textarea {
+    width: 100%; /* Alanı tam kaplar */
+    padding: 12px; /* Ferah durması için */
+    margin-bottom: var(--space-md); /* Elemanlar arası boşluk */
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-bg);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    box-sizing: border-box; /* Padding genişliği bozmaz */
+}
+
+/* Görseldeki gri kutulu seçim alanları */
+.form-group-box {
+    background: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    padding: 15px;
+    margin-bottom: var(--space-md);
+    border-radius: var(--radius);
+}
+
+.inline-label {
+    display: inline !important;
+    font-weight: 400 !important;
+    margin-left: 8px;
+}
+
+/* Buton Düzenlemeleri */
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-submit, .btn-reset {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    color: #fff;
+}
+
+.btn-submit {
+    background-color: #007bff; /* Görseldeki mavi */
+}
+
+.btn-reset {
+    background-color: #dc3545; /* Görseldeki kırmızı */
+}
+
+.btn-submit:hover { background-color: #0056b3; }
+.btn-reset:hover { background-color: #a71d2a; }
 }
