@@ -1,98 +1,37 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batuhan Akar | İletişim</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="header-inner">
-            <h1 class="logo">B<span class="logo-dot">.</span>A</h1>
-            <p class="tagline">Batuhan Akar &mdash; Kişisel Sayfa</p>
+<div class="contact-container">
+    <h3>Detaylı İletişim Formu</h3>
+    <form action="#">
+        <label for="name">Ad Soyad:</label>
+        <input type="text" id="name" name="name" placeholder="Örn: Asaf Karataş" required>
+
+        <label for="email">E-posta Adresi:</label>
+        <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+
+        <label for="password">Başvuru Takip Şifresi:</label>
+        <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+
+        <label>İletişim Tercihi:</label>
+        <div class="form-group-box">
+            <input type="radio" id="mail-pref" name="contact-pref" value="mail">
+            <label for="mail-pref" class="inline-label">Bana e-posta ile ulaşın</label><br>
+            <input type="radio" id="phone-pref" name="contact-pref" value="phone">
+            <label for="phone-pref" class="inline-label">Bana telefonla ulaşın</label>
         </div>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html" class="active">İletişim</a></li>
-        </ul>
-    </nav>
+        <label for="subject">Konu:</label>
+        <select id="subject" name="subject">
+            <option value="" disabled selected>Lütfen bir konu seçin...</option>
+            <option value="is">İş Teklifi</option>
+            <option value="soru">Soru</option>
+            <option value="geri">Geri Bildirim</option>
+        </select>
 
-    <main>
-        <section class="page-header">
-            <span class="label">Sayfa 03</span>
-            <h2>İletişim</h2>
-        </section>
+        <label for="message">Mesajınız:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
 
-        <section class="contact-grid">
-            <div class="contact-tile">
-                <span class="tile-icon">&#9993;</span>
-                <h3>E-posta</h3>
-                <a href="mailto:akarbatuhan3338@gmail.com">akarbatuhan3338@gmail.com</a>
-            </div>
-            <div class="contact-tile">
-                <span class="tile-icon">&#128187;</span>
-                <h3>GitHub</h3>
-                <a href="https://github.com/BatuAkar" target="_blank" rel="noopener">github.com/batuhanakar</a>
-            </div>
-            <div class="contact-tile">
-                <span class="tile-icon">&#128101;</span>
-                <h3>LinkedIn</h3>
-                <a href="https://linkedin.com/in/batuhanakar/" target="_blank" rel="noopener">LinkedIn Profilim</a>
-            </div>
-        </section>
-
-        <div class="contact-container">
-            <h3>Detaylı İletişim Formu</h3>
-            <form action="#">
-                <label for="name">Ad Soyad:</label> [cite: 7, 8]
-                <input type="text" id="name" name="name" placeholder="Örn: Asaf Karataş" required>
-
-                <label for="email">E-posta Adresi:</label> [cite: 7, 9]
-                <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
-
-                <label for="password">Başvuru Takip Şifresi:</label> [cite: 7]
-                <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
-
-                <label>İletişim Tercihi:</label>
-                <div class="form-group-box">
-                    <input type="radio" id="mail-pref" name="contact-pref" value="mail">
-                    <label for="mail-pref" class="inline-label">Bana e-posta ile ulaşın</label><br>
-                    <input type="radio" id="phone-pref" name="contact-pref" value="phone">
-                    <label for="phone-pref" class="inline-label">Bana telefonla ulaşın</label>
-                </div>
-
-                <label for="subject">Konu:</label> [cite: 7, 10]
-                <select id="subject" name="subject"> [cite: 10]
-                    <option value="" disabled selected>Lütfen bir konu seçin...</option>
-                    <option value="is">İş Teklifi</option>
-                    <option value="soru">Soru</option>
-                    <option value="geri">Geri Bildirim</option>
-                </select>
-
-                <label for="message">Mesajınız:</label> [cite: 7, 11]
-                <textarea id="message" name="message" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea> [cite: 11]
-
-                <div class="form-buttons">
-                    <button type="submit" class="btn-submit">Gönder</button> [cite: 12]
-                    <button type="reset" class="btn-reset">Temizle</button>
-                </div>
-            </form>
+        <div class="form-buttons">
+            <button type="submit" class="btn-submit">Gönder</button>
+            <button type="reset" class="btn-reset">Temizle</button>
         </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Batuhan Akar &mdash; Web Programlama Dersi</p>
-    </footer>
-
-    <script src="scripts/main.js"></script>
-</body>
-</html>
+    </form>
+</div>
