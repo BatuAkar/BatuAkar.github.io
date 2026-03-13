@@ -1,3 +1,4 @@
+/* ── SENİN ORİJİNAL DEĞİŞKENLERİN VE RESET AYARLARIN ── */
 :root {
     --color-bg: #faf7f2;
     --color-surface: #ffffff;
@@ -8,142 +9,350 @@
     --color-border: #e8e2da;
     --color-accent: #3a7c6a;
     --color-dark: #1e1c1a;
+
     --font-display: 'DM Serif Display', Georgia, serif;
     --font-body: 'Outfit', 'Segoe UI', sans-serif;
+
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
     --space-lg: 2.5rem;
     --space-xl: 4rem;
     --space-2xl: 6rem;
+
     --radius: 6px;
     --radius-lg: 12px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); background-color: var(--color-bg); color: var(--color-text); line-height: 1.75; display: flex; flex-direction: column; min-height: 100vh; }
 
-/* ── HEADER & NAV (Senin kodların) ── */
-header { padding: var(--space-xl) var(--space-md) var(--space-lg); text-align: center; border-bottom: 1px solid var(--color-border); background: var(--color-surface); position: relative; }
-header::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--color-primary); }
-.logo { font-family: var(--font-display); font-size: 2.8rem; color: var(--color-dark); letter-spacing: 0.05em; }
-.logo-dot { color: var(--color-primary); }
-nav { background: var(--color-surface); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; }
-nav ul { list-style: none; display: flex; justify-content: center; max-width: 700px; margin: 0 auto; }
-nav a { display: block; padding: var(--space-sm) var(--space-md); color: var(--color-text-muted); text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; }
-nav a.active { color: var(--color-primary); }
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.75;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-/* ── KONTENT VE ESKİ EFEKTLER (Senin kodların) ── */
-main { flex: 1; max-width: 780px; width: 100%; margin: 0 auto; padding: var(--space-xl) var(--space-md); }
-.content-block { margin-bottom: var(--space-xl); }
-blockquote { margin: var(--space-xl) 0; padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); border-left: 3px solid var(--color-primary); background: var(--color-primary-light); font-family: var(--font-display); font-style: italic; font-size: 1.2rem; position: relative; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
-blockquote::before { content: '\201C'; position: absolute; top: 10px; left: 14px; font-size: 3rem; color: var(--color-primary); opacity: 0.3; }
-
-.timeline { position: relative; padding-left: 28px; margin: var(--space-md) 0 var(--space-lg); }
-.timeline::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 1px; background: var(--color-border); }
-.timeline-entry { position: relative; padding-left: var(--space-md); margin-bottom: var(--space-lg); }
-.timeline-dot { position: absolute; left: -25px; top: 7px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--color-primary); background: var(--color-bg); }
-
-/* ── LABORATUVAR 3: YENİ FORM STİLLERİ [cite: 13] ── */
-.contact-container {
-    width: 100%; /* Mobil uyumlu taban */
-    max-width: 600px; /* Gereksinim: 600px [cite: 14] */
-    margin: 40px auto; /* Gereksinim: margin auto [cite: 14] */
-    padding: 25px; /* Gereksinim: İç boşluk [cite: 15] */
+/* ── HEADER ── */
+header {
+    padding: var(--space-xl) var(--space-md) var(--space-lg);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
     background: var(--color-surface);
-    border: 1px solid var(--color-border); /* Gereksinim: Kenarlık [cite: 16] */
-    border-radius: var(--radius-lg); /* Gereksinim: Köşe yuvarlama [cite: 16] */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
 }
 
-.contact-container label {
-    display: block; /* Elemanların alt alta gelmesi için kritik */
-    font-weight: 600;
-    margin-bottom: 8px;
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary);
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
     color: var(--color-dark);
+    letter-spacing: 0.05em;
+    animation: fadeIn 0.8s ease-out;
 }
 
-/* Gereksinim: input, select, textarea toplu seçici [cite: 22] */
+.logo-dot { color: var(--color-primary); }
+
+.tagline {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: var(--space-xs);
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+/* ── NAV ── */
+nav {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+nav a {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color var(--transition);
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 20px;
+    height: 2px;
+    background: var(--color-primary);
+    transition: transform var(--transition);
+}
+
+nav a:hover, nav a.active { color: var(--color-primary); }
+nav a:hover::after, nav a.active::after { transform: translateX(-50%) scaleX(1); }
+
+/* ── MAIN & PAGE HEADER ── */
+main {
+    flex: 1;
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}
+
+.page-header { margin-bottom: var(--space-xl); }
+
+.label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--color-dark);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+}
+
+h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-dark);
+    margin-bottom: var(--space-sm);
+}
+
+/* ── ANA SAYFA (INDEX) STİLLERİ ── */
+.hero-banner {
+    padding: var(--space-lg) 0 var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-xl);
+}
+
+.hero-text h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+.hero-text p { font-size: 1.1rem; color: var(--color-text-muted); max-width: 560px; line-height: 1.8; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.grid-card {
+    display: block;
+    text-decoration: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+}
+
+.grid-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(44, 40, 37, 0.06); border-color: transparent; }
+.grid-card:hover::before { transform: scaleX(1); }
+
+.card-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-border);
+    display: block;
+    margin-bottom: var(--space-sm);
+    transition: color var(--transition);
+}
+
+.grid-card:hover .card-num { color: var(--color-primary); }
+
+/* ── HAKKIMDA (ABOUT) STİLLERİ ── */
+.content-block { margin-bottom: var(--space-xl); }
+strong { color: var(--color-primary); font-weight: 600; }
+em { color: var(--color-accent); font-style: italic; }
+
+blockquote {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);
+    border-left: 3px solid var(--color-primary);
+    background: var(--color-primary-light);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    position: relative;
+}
+
+blockquote::before {
+    content: '\201C';
+    position: absolute;
+    top: 10px; left: 14px;
+    font-size: 3rem; color: var(--color-primary); opacity: 0.3;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: var(--space-md) 0 var(--space-lg);
+}
+
+.timeline::before {
+    content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px;
+    width: 1px; background: var(--color-border);
+}
+
+.timeline-entry { position: relative; padding-left: var(--space-md); margin-bottom: var(--space-lg); }
+.timeline-dot {
+    position: absolute; left: -25px; top: 7px;
+    width: 11px; height: 11px; border-radius: 50%;
+    border: 2px solid var(--color-primary); background: var(--color-bg);
+}
+
+/* ── İLGİ ALANLARI (INTERESTS) STİLLERİ ── */
+.interest-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.interest-card h3 {
+    color: var(--color-primary);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-md);
+}
+
+dl dt { font-weight: 600; color: var(--color-dark); font-size: 1.05rem; margin-top: var(--space-md); }
+dl dt::before { content: '— '; color: var(--color-primary); }
+dl dd { padding: var(--space-xs) 0 var(--space-xs) var(--space-md); color: var(--color-text-muted); border-left: 2px solid var(--color-border); }
+
+/* ── İLETİŞİM (CONTACT) STİLLERİ ── */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.contact-tile {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    transition: all var(--transition);
+}
+
+.contact-tile:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+
+/* ── LABORATUVAR 3: YENİ FORM STİLLERİ (EKSTRA) ── */
+.contact-container {
+    width: 100%;
+    max-width: 650px;
+    margin: var(--space-xl) auto;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-container label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--color-text); }
+
 .contact-container input[type="text"],
 .contact-container input[type="email"],
 .contact-container input[type="password"],
 .contact-container select,
 .contact-container textarea {
-    width: 100%; /* Gereksinim: 100% genişlik [cite: 18] */
-    padding: 12px; /* Gereksinim: padding [cite: 19] */
-    margin-bottom: 20px; /* Gereksinim: margin-bottom [cite: 20] */
+    width: 100% !important;
+    display: block !important;
+    padding: 12px;
+    margin-bottom: var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    background-color: #fdfdfd;
+    background-color: var(--color-bg);
     font-family: var(--font-body);
-    box-sizing: border-box; /* Taşmayı önler */
+    box-sizing: border-box;
 }
 
-.form-group-box { background: #f9f9f9; padding: 15px; border-radius: var(--radius); margin-bottom: 20px; border: 1px solid #eee; }
+.form-group-box { background: #fcfcfc; border: 1px solid #f0f0f0; padding: 15px; margin-bottom: var(--space-md); border-radius: var(--radius); }
 .inline-label { display: inline !important; font-weight: 400 !important; margin-left: 8px; }
 
-/* Gereksinim: Gönder butonu stili [cite: 21] */
-.form-buttons { display: flex; gap: 10px; }
-.btn-submit { flex: 1; background: #007bff; color: white; border: none; padding: 12px; border-radius: var(--radius); font-weight: bold; cursor: pointer; }
-.btn-reset { flex: 1; background: #dc3545; color: white; border: none; padding: 12px; border-radius: var(--radius); font-weight: bold; cursor: pointer; }
+.form-buttons { display: flex; gap: 15px; }
+.btn-submit { flex: 1; background: #007bff; color: #fff; padding: 14px; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
+.btn-reset { flex: 1; background: #dc3545; color: #fff; padding: 14px; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
 
-/* ── RESPONSIVE & FOOTER ── */
-@media (max-width: 768px) { .contact-container { width: 95%; } }
+/* ── FOOTER & ANIMATIONS ── */
 footer { border-top: 1px solid var(--color-border); text-align: center; padding: var(--space-md); margin-top: auto; background: var(--color-surface); }
-/* --- SADECE LAB 3: İLETİŞİM FORMU (Eski kodunun en altına ekle) --- */
+footer p { color: var(--color-text-muted); font-size: 0.85rem; }
 
-.contact-container {
-    width: 60%; /* Gereksinim: %50-%60 [cite: 14] */
-    margin: var(--space-xl) auto; /* Sayfayı ortalar [cite: 14] */
-    padding: var(--space-lg); /* İç boşluk [cite: 15] */
-    background: var(--color-surface);
-    border: 1px solid var(--color-border); /* Belirgin kenarlık [cite: 16] */
-    border-radius: var(--radius-lg); /* Köşe yuvarlaması [cite: 16] */
-    box-sizing: border-box;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Form elemanlarının alt alta ve tam genişlikte durmasını sağlar [cite: 18, 20] */
-.contact-container label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
+.fade-observe { opacity: 0; transform: translateY(16px); transition: all 0.5s ease-out; }
+.fade-observe.visible { opacity: 1; transform: translateY(0); }
 
-.contact-container input,
-.contact-container select,
-.contact-container textarea {
-    width: 100% !important; /* Genişlik tamamını kaplamalı [cite: 18] */
-    padding: 12px !important; /* Ferah görünüm için padding [cite: 19] */
-    margin-bottom: 20px !important; /* Alt elemanla boşluk [cite: 20] */
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    display: block;
-    box-sizing: border-box;
-}
-
-/* Radyo ve Checkbox'lar için yan yana durma istisnası */
-.contact-container input[type="radio"],
-.contact-container input[type="checkbox"] {
-    width: auto !important;
-    display: inline-block !important;
-    margin-bottom: 0 !important;
-}
-
-.inline-label {
-    display: inline !important;
-    font-weight: 400 !important;
-    margin-left: 8px;
-}
-
-/* Gönder Butonu Düzenlemesi [cite: 21] */
-.btn-submit {
-    background-color: #007bff !important; /* Arka plan rengi [cite: 21] */
-    color: white;
-    border: none !important; /* Kenarlık kaldırıldı [cite: 21] */
-    padding: 14px 25px !important; /* Buton büyütüldü [cite: 21] */
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: var(--radius);
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    nav ul { flex-wrap: wrap; }
+    .grid, .contact-grid { grid-template-columns: 1fr; }
+    .contact-container { width: 95%; }
 }
