@@ -50,24 +50,43 @@
             </div>
         </section>
 
-        <section class="contact-form-wrap">
-            <h3>Mesaj Gönderin</h3>
-            <form class="contact-form" onsubmit="return handleFormSubmit(event)">
-                <div class="field">
-                    <label for="name">Adınız</label>
-                    <input type="text" id="name" name="name" placeholder="Adınızı yazınız" required>
+        <div class="contact-container">
+            <h3>Detaylı İletişim Formu</h3>
+            <form action="#">
+                <label for="name">Ad Soyad:</label> [cite: 7, 8]
+                <input type="text" id="name" name="name" placeholder="Örn: Asaf Karataş" required>
+
+                <label for="email">E-posta Adresi:</label> [cite: 7, 9]
+                <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+
+                <label for="password">Başvuru Takip Şifresi:</label> [cite: 7]
+                <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+
+                <label>İletişim Tercihi:</label>
+                <div class="form-group-box">
+                    <input type="radio" id="mail-pref" name="contact-pref" value="mail">
+                    <label for="mail-pref" class="inline-label">Bana e-posta ile ulaşın</label><br>
+                    <input type="radio" id="phone-pref" name="contact-pref" value="phone">
+                    <label for="phone-pref" class="inline-label">Bana telefonla ulaşın</label>
                 </div>
-                <div class="field">
-                    <label for="email">E-posta</label>
-                    <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+
+                <label for="subject">Konu:</label> [cite: 7, 10]
+                <select id="subject" name="subject"> [cite: 10]
+                    <option value="" disabled selected>Lütfen bir konu seçin...</option>
+                    <option value="is">İş Teklifi</option>
+                    <option value="soru">Soru</option>
+                    <option value="geri">Geri Bildirim</option>
+                </select>
+
+                <label for="message">Mesajınız:</label> [cite: 7, 11]
+                <textarea id="message" name="message" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea> [cite: 11]
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn-submit">Gönder</button> [cite: 12]
+                    <button type="reset" class="btn-reset">Temizle</button>
                 </div>
-                <div class="field">
-                    <label for="message">Mesaj</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Mesajınızı buraya yazabilirsiniz..." required></textarea>
-                </div>
-                <button type="submit" class="btn">Gönder</button>
             </form>
-        </section>
+        </div>
     </main>
 
     <footer>
