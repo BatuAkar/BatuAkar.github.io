@@ -8,212 +8,142 @@
     --color-border: #e8e2da;
     --color-accent: #3a7c6a;
     --color-dark: #1e1c1a;
-
     --font-display: 'DM Serif Display', Georgia, serif;
     --font-body: 'Outfit', 'Segoe UI', sans-serif;
-
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 1.5rem;
     --space-lg: 2.5rem;
     --space-xl: 4rem;
     --space-2xl: 6rem;
-
     --radius: 6px;
     --radius-lg: 12px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background-color: var(--color-bg); color: var(--color-text); line-height: 1.75; display: flex; flex-direction: column; min-height: 100vh; }
 
-html {
-    scroll-behavior: smooth;
-}
+/* ── HEADER & NAV (Senin kodların) ── */
+header { padding: var(--space-xl) var(--space-md) var(--space-lg); text-align: center; border-bottom: 1px solid var(--color-border); background: var(--color-surface); position: relative; }
+header::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--color-primary); }
+.logo { font-family: var(--font-display); font-size: 2.8rem; color: var(--color-dark); letter-spacing: 0.05em; }
+.logo-dot { color: var(--color-primary); }
+nav { background: var(--color-surface); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; }
+nav ul { list-style: none; display: flex; justify-content: center; max-width: 700px; margin: 0 auto; }
+nav a { display: block; padding: var(--space-sm) var(--space-md); color: var(--color-text-muted); text-decoration: none; font-weight: 500; text-transform: uppercase; font-size: 0.85rem; }
+nav a.active { color: var(--color-primary); }
 
-body {
-    font-family: var(--font-body);
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.75;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+/* ── KONTENT VE ESKİ EFEKTLER (Senin kodların) ── */
+main { flex: 1; max-width: 780px; width: 100%; margin: 0 auto; padding: var(--space-xl) var(--space-md); }
+.content-block { margin-bottom: var(--space-xl); }
+blockquote { margin: var(--space-xl) 0; padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl); border-left: 3px solid var(--color-primary); background: var(--color-primary-light); font-family: var(--font-display); font-style: italic; font-size: 1.2rem; position: relative; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+blockquote::before { content: '\201C'; position: absolute; top: 10px; left: 14px; font-size: 3rem; color: var(--color-primary); opacity: 0.3; }
 
-/* ── HEADER ── */
-header {
-    padding: var(--space-xl) var(--space-md) var(--space-lg);
-    text-align: center;
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-surface);
-    position: relative;
-}
+.timeline { position: relative; padding-left: 28px; margin: var(--space-md) 0 var(--space-lg); }
+.timeline::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 1px; background: var(--color-border); }
+.timeline-entry { position: relative; padding-left: var(--space-md); margin-bottom: var(--space-lg); }
+.timeline-dot { position: absolute; left: -25px; top: 7px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--color-primary); background: var(--color-bg); }
 
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--color-primary);
-}
-
-.logo {
-    font-family: var(--font-display);
-    font-size: 2.8rem;
-    color: var(--color-dark);
-    letter-spacing: 0.05em;
-}
-
-.logo-dot {
-    color: var(--color-primary);
-}
-
-/* ── NAV ── */
-nav {
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-nav a {
-    display: block;
-    padding: var(--space-sm) var(--space-md);
-    color: var(--color-text-muted);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-}
-
-nav a.active {
-    color: var(--color-primary);
-}
-
-/* ── MAIN ── */
-main {
-    flex: 1;
-    max-width: 780px;
-    width: 100%;
-    margin: 0 auto;
-    padding: var(--space-xl) var(--space-md);
-}
-
-/* ── LABORATUVAR 3: İLETİŞİM FORMU (MEDYA SORGUSU DIŞINDA OLMALI) ── */
+/* ── LABORATUVAR 3: YENİ FORM STİLLERİ [cite: 13] ── */
 .contact-container {
-    width: 100%; [cite: 14]
-    max-width: 650px; [cite: 14]
-    margin: var(--space-xl) auto; [cite: 14]
-    padding: var(--space-lg); [cite: 15]
+    width: 100%; /* Mobil uyumlu taban */
+    max-width: 600px; /* Gereksinim: 600px [cite: 14] */
+    margin: 40px auto; /* Gereksinim: margin auto [cite: 14] */
+    padding: 25px; /* Gereksinim: İç boşluk [cite: 15] */
     background: var(--color-surface);
-    border: 1px solid var(--color-border); [cite: 16]
-    border-radius: var(--radius-lg); [cite: 16]
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.contact-container h2 {
-    text-align: center;
-    color: var(--color-dark);
-    margin-bottom: var(--space-lg);
+    border: 1px solid var(--color-border); /* Gereksinim: Kenarlık [cite: 16] */
+    border-radius: var(--radius-lg); /* Gereksinim: Köşe yuvarlama [cite: 16] */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .contact-container label {
-    display: block; /* Yazı ve input'un alt alta gelmesini sağlar */ 
+    display: block; /* Elemanların alt alta gelmesi için kritik */
     font-weight: 600;
-    margin-bottom: 8px; [cite: 20]
-    color: var(--color-text);
+    margin-bottom: 8px;
+    color: var(--color-dark);
 }
 
-/* Tüm input, select ve textarea elemanları için ortak stil */
+/* Gereksinim: input, select, textarea toplu seçici [cite: 22] */
 .contact-container input[type="text"],
 .contact-container input[type="email"],
 .contact-container input[type="password"],
 .contact-container select,
 .contact-container textarea {
-    width: 100%; 
-    padding: 12px; [cite: 19]
-    margin-bottom: var(--space-md); [cite: 20]
+    width: 100%; /* Gereksinim: 100% genişlik [cite: 18] */
+    padding: 12px; /* Gereksinim: padding [cite: 19] */
+    margin-bottom: 20px; /* Gereksinim: margin-bottom [cite: 20] */
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    background-color: var(--color-bg);
+    background-color: #fdfdfd;
     font-family: var(--font-body);
-    font-size: 1rem;
-    box-sizing: border-box; /* Padding'in genişliği bozmasını engeller */
+    box-sizing: border-box; /* Taşmayı önler */
 }
 
-.form-group-box {
-    background: #fcfcfc;
-    border: 1px solid #f0f0f0;
-    padding: 15px;
-    margin-bottom: var(--space-md);
+.form-group-box { background: #f9f9f9; padding: 15px; border-radius: var(--radius); margin-bottom: 20px; border: 1px solid #eee; }
+.inline-label { display: inline !important; font-weight: 400 !important; margin-left: 8px; }
+
+/* Gereksinim: Gönder butonu stili [cite: 21] */
+.form-buttons { display: flex; gap: 10px; }
+.btn-submit { flex: 1; background: #007bff; color: white; border: none; padding: 12px; border-radius: var(--radius); font-weight: bold; cursor: pointer; }
+.btn-reset { flex: 1; background: #dc3545; color: white; border: none; padding: 12px; border-radius: var(--radius); font-weight: bold; cursor: pointer; }
+
+/* ── RESPONSIVE & FOOTER ── */
+@media (max-width: 768px) { .contact-container { width: 95%; } }
+footer { border-top: 1px solid var(--color-border); text-align: center; padding: var(--space-md); margin-top: auto; background: var(--color-surface); }
+/* --- SADECE LAB 3: İLETİŞİM FORMU (Eski kodunun en altına ekle) --- */
+
+.contact-container {
+    width: 60%; /* Gereksinim: %50-%60 [cite: 14] */
+    margin: var(--space-xl) auto; /* Sayfayı ortalar [cite: 14] */
+    padding: var(--space-lg); /* İç boşluk [cite: 15] */
+    background: var(--color-surface);
+    border: 1px solid var(--color-border); /* Belirgin kenarlık [cite: 16] */
+    border-radius: var(--radius-lg); /* Köşe yuvarlaması [cite: 16] */
+    box-sizing: border-box;
+}
+
+/* Form elemanlarının alt alta ve tam genişlikte durmasını sağlar [cite: 18, 20] */
+.contact-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.contact-container input,
+.contact-container select,
+.contact-container textarea {
+    width: 100% !important; /* Genişlik tamamını kaplamalı [cite: 18] */
+    padding: 12px !important; /* Ferah görünüm için padding [cite: 19] */
+    margin-bottom: 20px !important; /* Alt elemanla boşluk [cite: 20] */
+    border: 1px solid var(--color-border);
     border-radius: var(--radius);
+    display: block;
+    box-sizing: border-box;
 }
 
-/* Radyo/Checkbox yanındaki yazıların yan yana durması için istisna */
+/* Radyo ve Checkbox'lar için yan yana durma istisnası */
+.contact-container input[type="radio"],
+.contact-container input[type="checkbox"] {
+    width: auto !important;
+    display: inline-block !important;
+    margin-bottom: 0 !important;
+}
+
 .inline-label {
-    display: inline !important; 
+    display: inline !important;
     font-weight: 400 !important;
     margin-left: 8px;
 }
 
-/* Buton Düzenlemeleri */
-.form-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.btn-submit, .btn-reset {
-    flex: 1;
-    padding: 14px; [cite: 21]
-    border: none; [cite: 21]
-    border-radius: var(--radius);
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    color: #fff;
-}
-
+/* Gönder Butonu Düzenlemesi [cite: 21] */
 .btn-submit {
-    background-color: #007bff; /* Mavi gönder butonu */ [cite: 21, 12]
-}
-
-.btn-reset {
-    background-color: #dc3545; /* Kırmızı temizle butonu */
-}
-
-/* ── RESPONSIVE (SADECE MOBİL DEĞİŞİKLİKLER BURADA OLMALI) ── */
-@media (max-width: 768px) {
-    nav ul {
-        flex-wrap: wrap;
-    }
-    .contact-container {
-        width: 95%; /* Mobil ekranda biraz daha genişlesin */
-    }
-}
-
-footer {
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-    padding: var(--space-md);
-    margin-top: auto;
-    background: var(--color-surface);
+    background-color: #007bff !important; /* Arka plan rengi [cite: 21] */
+    color: white;
+    border: none !important; /* Kenarlık kaldırıldı [cite: 21] */
+    padding: 14px 25px !important; /* Buton büyütüldü [cite: 21] */
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: var(--radius);
 }
