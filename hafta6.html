@@ -3,32 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hafta 6 - Uygulamalar</title>
+    <title>Hafta 6 - JavaScript Uygulamaları</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; margin-bottom: 20px; }
-        h2 { color: #333; font-size: 1.2rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+        /* Sitenin genel karanlık/profesyonel temasına uyumlu CSS */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #1e1e24; /* Koyu arka plan */
+            color: #e0e0e0;
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .container { 
+            background: #2b2b36; 
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            width: 100%; 
+            max-width: 450px; 
+            margin-bottom: 25px; 
+        }
+        h2 { 
+            color: #ffffff; 
+            font-size: 1.3rem; 
+            border-bottom: 1px solid #444; 
+            padding-bottom: 10px; 
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        input, select { 
+            width: 100%; 
+            padding: 10px; 
+            background-color: #1e1e24;
+            color: #fff;
+            border: 1px solid #444; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 20px;
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 1rem; 
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
         button:hover { background-color: #0056b3; }
-        .result-box { margin-top: 15px; padding: 15px; border-radius: 4px; display: none; }
-        #notSonuc { background-color: #f8f9fa; border-left: 5px solid #007bff; }
-        #birimSonuc { background-color: #e8f5e9; border-left: 5px solid #4caf50; font-weight: bold; text-align: center; }
-        .back-btn { margin-top: 20px; text-decoration: none; color: #666; font-weight: bold; }
-        .back-btn:hover { color: #000; }
+        
+        .result-box { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 4px; 
+            display: none; 
+            color: #fff;
+        }
+        #notSonuc { background-color: #2c3e50; border-left: 5px solid #3498db; }
+        #birimSonuc { background-color: #1e3a29; border-left: 5px solid #2ecc71; font-weight: bold; text-align: center; font-size: 1.1rem; }
+        
+        .error-msg {
+            color: #ff4757;
+            background-color: rgba(255, 71, 87, 0.1);
+            padding: 10px;
+            border-left: 4px solid #ff4757;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .back-btn { 
+            margin-top: 10px; 
+            text-decoration: none; 
+            color: #aaa; 
+            padding: 10px 20px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { color: #fff; background-color: #333; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h2>Öğrenci Not Hesaplama</h2>
-        <input type="text" id="ad" placeholder="Ad Soyad">
-        <input type="number" id="vize" placeholder="Vize Notu">
-        <input type="number" id="final" placeholder="Final Notu">
+        
+        <label for="ad">Ad Soyad:</label>
+        <input type="text" id="ad" placeholder="Örn: Batuhan Akar">
+        
+        <label for="vize">Vize Notu (%40):</label>
+        <input type="number" id="vize" placeholder="0 - 100 arası">
+        
+        <label for="final">Final Notu (%60):</label>
+        <input type="number" id="final" placeholder="0 - 100 arası">
+        
+        <div id="notHata" class="error-msg"></div>
+
         <button onclick="hesaplaNot()">Hesapla</button>
         
         <div id="notSonuc" class="result-box">
-            <p id="resAd" style="font-weight:bold;"></p>
+            <p id="resAd" style="font-weight:bold; font-size: 1.1rem; margin-top:0; color: #3498db;"></p>
             <p id="resOrt"></p>
             <p id="resHarf"></p>
             <p id="resDurum"></p>
@@ -37,27 +127,59 @@
 
     <div class="container">
         <h2>Birim Dönüştürücü</h2>
-        <label>Değer Giriniz:</label>
-        <input type="number" id="birimDeger" value="50">
-        <label>Dönüşüm Tipi:</label>
+        
+        <label for="birimDeger">Değer Giriniz:</label>
+        <input type="number" id="birimDeger" placeholder="Dönüştürülecek miktar">
+        
+        <label for="tip">Dönüşüm Tipi:</label>
         <select id="tip">
             <option value="c-f">Celsius -> Fahrenheit</option>
             <option value="m-km">Metre -> Kilometre</option>
             <option value="kg-gr">Kilogram -> Gram</option>
         </select>
+
+        <div id="birimHata" class="error-msg"></div>
+
         <button onclick="donustur()">Hesapla</button>
+        
         <div id="birimSonuc" class="result-box"></div>
     </div>
 
     <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
 
     <script>
+        // 1. Not Hesaplama Mantığı ve Hata Kontrolleri
         function hesaplaNot() {
-            const ad = document.getElementById('ad').value;
-            const vize = parseFloat(document.getElementById('vize').value);
-            const final = parseFloat(document.getElementById('final').value);
+            const ad = document.getElementById('ad').value.trim();
+            const vizeInput = document.getElementById('vize').value;
+            const finalInput = document.getElementById('final').value;
+            const hataDiv = document.getElementById('notHata');
+            const sonucDiv = document.getElementById('notSonuc');
+
+            // Hata kutusunu sıfırla
+            hataDiv.style.display = "none";
+            sonucDiv.style.display = "none";
+
+            // Hata Kontrolleri (Validation)
+            if (ad === "") {
+                gosterHata(hataDiv, "Lütfen ad soyad bilgisini boş bırakmayınız.");
+                return;
+            }
+            if (vizeInput === "" || finalInput === "") {
+                gosterHata(hataDiv, "Vize ve Final notları boş bırakılamaz.");
+                return;
+            }
+
+            const vize = parseFloat(vizeInput);
+            const final = parseFloat(finalInput);
+
+            if (vize < 0 || vize > 100 || final < 0 || final > 100) {
+                gosterHata(hataDiv, "Notlar 0 ile 100 arasında olmalıdır. Mantıklı değerler girin.");
+                return;
+            }
+
+            // Hesaplama
             const ort = (vize * 0.4) + (final * 0.6);
-            
             let harf = "";
             if (ort >= 90) harf = "AA";
             else if (ort >= 80) harf = "BA";
@@ -66,25 +188,60 @@
             else if (ort >= 50) harf = "CC";
             else harf = "FF";
 
+            // DOM'a yazdırma
             document.getElementById('resAd').innerText = ad;
             document.getElementById('resOrt').innerText = "Ortalama: " + ort.toFixed(2);
             document.getElementById('resHarf').innerText = "Harf Notu: " + harf;
-            document.getElementById('resDurum').innerText = "Durum: " + (ort >= 50 ? "Geçti" : "Kaldı");
-            document.getElementById('notSonuc').style.display = "block";
+            
+            const durumEl = document.getElementById('resDurum');
+            if (ort >= 50) {
+                durumEl.innerText = "Durum: Geçti";
+                durumEl.style.color = "#2ecc71"; // Geçtiyse yeşil
+            } else {
+                durumEl.innerText = "Durum: Kaldı";
+                durumEl.style.color = "#e74c3c"; // Kaldıysa kırmızı
+            }
+
+            sonucDiv.style.display = "block";
         }
 
+        // 2. Birim Dönüştürücü Mantığı ve Hata Kontrolleri
         function donustur() {
-            const val = parseFloat(document.getElementById('birimDeger').value);
+            const valInput = document.getElementById('birimDeger').value;
             const tip = document.getElementById('tip').value;
-            let res = 0;
+            const hataDiv = document.getElementById('birimHata');
+            const sonucDiv = document.getElementById('birimSonuc');
 
+            hataDiv.style.display = "none";
+            sonucDiv.style.display = "none";
+
+            if (valInput === "") {
+                gosterHata(hataDiv, "Lütfen dönüştürülecek bir değer giriniz.");
+                return;
+            }
+
+            const val = parseFloat(valInput);
+
+            // Uzunluk ve ağırlık eksi olamaz (Fizik kuralları gereği)
+            if ((tip === "m-km" || tip === "kg-gr") && val < 0) {
+                gosterHata(hataDiv, "Uzunluk ve ağırlık değerleri negatif olamaz.");
+                return;
+            }
+
+            let res = 0;
             if (tip === "c-f") res = (val * 9/5) + 32;
             else if (tip === "m-km") res = val / 1000;
             else if (tip === "kg-gr") res = val * 1000;
 
-            const display = document.getElementById('birimSonuc');
-            display.innerText = "Sonuç: " + res.toLocaleString();
-            display.style.display = "block";
+            // Sonucu .toLocaleString() ile formatlayarak yazdırıyoruz (Örn: 50000 -> 50.000)
+            sonucDiv.innerText = "Sonuç: " + res.toLocaleString('tr-TR');
+            sonucDiv.style.display = "block";
+        }
+
+        // Hata mesajını ekranda göstermek için yardımcı fonksiyon
+        function gosterHata(element, mesaj) {
+            element.innerText = mesaj;
+            element.style.display = "block";
         }
     </script>
 </body>
