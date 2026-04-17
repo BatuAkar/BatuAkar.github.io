@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafta 6 - Uygulamalar</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; margin-bottom: 20px; }
+        h2 { color: #333; font-size: 1.2rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+        button:hover { background-color: #0056b3; }
+        .result-box { margin-top: 15px; padding: 15px; border-radius: 4px; display: none; }
+        #notSonuc { background-color: #f8f9fa; border-left: 5px solid #007bff; }
+        #birimSonuc { background-color: #e8f5e9; border-left: 5px solid #4caf50; font-weight: bold; text-align: center; }
+        .back-btn { margin-top: 20px; text-decoration: none; color: #666; font-weight: bold; }
+        .back-btn:hover { color: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Öğrenci Not Hesaplama</h2>
+        <input type="text" id="ad" placeholder="Ad Soyad">
+        <input type="number" id="vize" placeholder="Vize Notu">
+        <input type="number" id="final" placeholder="Final Notu">
+        <button onclick="hesaplaNot()">Hesapla</button>
+        
+        <div id="notSonuc" class="result-box">
+            <p id="resAd" style="font-weight:bold;"></p>
+            <p id="resOrt"></p>
+            <p id="resHarf"></p>
+            <p id="resDurum"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Birim Dönüştürücü</h2>
+        <label>Değer Giriniz:</label>
+        <input type="number" id="birimDeger" value="50">
+        <label>Dönüşüm Tipi:</label>
+        <select id="tip">
+            <option value="c-f">Celsius -> Fahrenheit</option>
+            <option value="m-km">Metre -> Kilometre</option>
+            <option value="kg-gr">Kilogram -> Gram</option>
+        </select>
+        <button onclick="donustur()">Hesapla</button>
+        <div id="birimSonuc" class="result-box"></div>
+    </div>
+
+    <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+
+    <script>
+        function hesaplaNot() {
+            const ad = document.getElementById('ad').value;
+            const vize = parseFloat(document.getElementById('vize').value);
+            const final = parseFloat(document.getElementById('final').value);
+            const ort = (vize * 0.4) + (final * 0.6);
+            
+            let harf = "";
+            if (ort >= 90) harf = "AA";
+            else if (ort >= 80) harf = "BA";
+            else if (ort >= 70) harf = "BB";
+            else if (ort >= 60) harf = "CB";
+            else if (ort >= 50) harf = "CC";
+            else harf = "FF";
+
+            document.getElementById('resAd').innerText = ad;
+            document.getElementById('resOrt').innerText = "Ortalama: " + ort.toFixed(2);
+            document.getElementById('resHarf').innerText = "Harf Notu: " + harf;
+            document.getElementById('resDurum').innerText = "Durum: " + (ort >= 50 ? "Geçti" : "Kaldı");
+            document.getElementById('notSonuc').style.display = "block";
+        }
+
+        function donustur() {
+            const val = parseFloat(document.getElementById('birimDeger').value);
+            const tip = document.getElementById('tip').value;
+            let res = 0;
+
+            if (tip === "c-f") res = (val * 9/5) + 32;
+            else if (tip === "m-km") res = val / 1000;
+            else if (tip === "kg-gr") res = val * 1000;
+
+            const display = document.getElementById('birimSonuc');
+            display.innerText = "Sonuç: " + res.toLocaleString();
+            display.style.display = "block";
+        }
+    </script>
+</body>
+</html>
