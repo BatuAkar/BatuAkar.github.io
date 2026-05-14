@@ -353,3 +353,32 @@ footer p { color: var(--color-text-muted); font-size: 0.85rem; }
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* Radyo butonlarının tüm satırı kaplamasını engelle */
+.contact-container input[type="radio"] {
+    width: auto !important; /* 100% kuralını devre dışı bırakır */
+    margin-bottom: 0;       /* Alt boşluğu sıfırla */
+    cursor: pointer;
+    accent-color: var(--color-primary); /* Seçildiğinde senin mavi tonunu alır */
+}
+
+/* Form kutusu içindeki her bir satırı hizala */
+.form-group-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+    background: #fcfcfc;
+    border: 1px solid var(--color-border);
+}
+
+/* Input ve Label'ı dikeyde tam ortala */
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Buton ile yazı arasındaki boşluk */
+}
+
+.inline-label {
+    margin: 0 !important; /* Etiketin kendi boşluklarını sıfırla */
+    cursor: pointer;
+}
