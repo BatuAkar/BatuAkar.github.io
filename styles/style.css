@@ -1,11 +1,11 @@
-/* ── MAVİ TEMA GÜNCELLEMESİ ── */
+/* ── MAVİ TEMA & FİNAL DÜZELTMELERİ ── */
 :root {
-    --color-bg: #f4f7fa;           /* Hafif buz mavisi arka plan */
+    --color-bg: #f4f7fa;           /* Hafif buz mavisi */
     --color-surface: #ffffff;
     --color-primary: #1a73e8;      /* Modern Kurumsal Mavi */
     --color-primary-dark: #0d47a1; 
     --color-primary-light: rgba(26, 115, 232, 0.08);
-    --color-text: #1e293b;         /* Daha koyu ve profesyonel slate */
+    --color-text: #1e293b;         /* Koyu Slate */
     --color-text-muted: #64748b;
     --color-border: #e2e8f0;
     --color-accent: #0ea5e9;       /* Canlı gökyüzü mavisi */
@@ -61,7 +61,7 @@ header::after {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: var(--color-primary); /* Turuncudan Maviye */
+    background: var(--color-primary);
 }
 
 .logo {
@@ -138,8 +138,6 @@ main {
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
 }
-
-.page-header { margin-bottom: var(--space-xl); }
 
 .label {
     display: inline-block;
@@ -219,11 +217,7 @@ h3 {
 
 .grid-card:hover .card-num { color: var(--color-primary); }
 
-/* ── HAKKIMDA (ABOUT) STİLLERİ ── */
-.content-block { margin-bottom: var(--space-xl); }
-strong { color: var(--color-primary); font-weight: 600; }
-em { color: var(--color-accent); font-style: italic; }
-
+/* ── ABOUT & INTERESTS ── */
 blockquote {
     margin: var(--space-xl) 0;
     padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);
@@ -234,75 +228,21 @@ blockquote {
     font-style: italic;
     font-size: 1.2rem;
     color: var(--color-text-muted);
-    line-height: 1.6;
-    position: relative;
 }
 
-blockquote::before {
-    content: '\201C';
-    position: absolute;
-    top: 10px; left: 14px;
-    font-size: 3rem; color: var(--color-primary); opacity: 0.3;
-}
-
-.timeline {
-    position: relative;
-    padding-left: 28px;
-    margin: var(--space-md) 0 var(--space-lg);
-}
-
-.timeline::before {
-    content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px;
-    width: 1px; background: var(--color-border);
-}
-
-.timeline-entry { position: relative; padding-left: var(--space-md); margin-bottom: var(--space-lg); }
 .timeline-dot {
     position: absolute; left: -25px; top: 7px;
     width: 11px; height: 11px; border-radius: 50%;
     border: 2px solid var(--color-primary); background: var(--color-bg);
 }
 
-/* ── İLGİ ALANLARI (INTERESTS) STİLLERİ ── */
-.interest-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    margin-bottom: var(--space-md);
-}
-
 .interest-card h3 {
     color: var(--color-primary);
-    padding-bottom: var(--space-xs);
     border-bottom: 1px solid var(--color-border);
     margin-bottom: var(--space-md);
 }
 
-dl dt { font-weight: 600; color: var(--color-dark); font-size: 1.05rem; margin-top: var(--space-md); }
-dl dt::before { content: '— '; color: var(--color-primary); }
-dl dd { padding: var(--space-xs) 0 var(--space-xs) var(--space-md); color: var(--color-text-muted); border-left: 2px solid var(--color-border); }
-
-/* ── İLETİŞİM (CONTACT) STİLLERİ ── */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
-    margin-bottom: var(--space-xl);
-}
-
-.contact-tile {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg) var(--space-md);
-    text-align: center;
-    transition: all var(--transition);
-}
-
-.contact-tile:hover { border-color: var(--color-primary); transform: translateY(-2px); }
-
-/* ── LABORATUVAR 3 & 7: FORM STİLLERİ ── */
+/* ── FORM & İLETİŞİM KONTEYNER ── */
 .contact-container {
     width: 100%;
     max-width: 650px;
@@ -316,7 +256,10 @@ dl dd { padding: var(--space-xs) 0 var(--space-xs) var(--space-md); color: var(-
 
 .contact-container label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--color-text); }
 
-.contact-container input,
+/* Genel Inputlar */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container input[type="password"],
 .contact-container select,
 .contact-container textarea {
     width: 100% !important;
@@ -328,7 +271,37 @@ dl dd { padding: var(--space-xs) 0 var(--space-xs) var(--space-md); color: var(-
     font-family: var(--font-body);
 }
 
-/* Mavi Butonlar */
+/* ── RADYO BUTONU DÜZELTMESİ (KRİTİK) ── */
+.contact-container .form-group-box .radio-item input[type="radio"] {
+    width: auto !important; /* Global %100 kuralını ezer */
+    height: auto !important;
+    margin: 0 !important;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.radio-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.radio-item label {
+    margin-bottom: 0 !important;
+    font-weight: 400 !important;
+    cursor: pointer;
+}
+
+.form-group-box { 
+    background: #fcfcfc; 
+    border: 1px solid var(--color-border); 
+    padding: 15px; 
+    margin-bottom: var(--space-md); 
+    border-radius: var(--radius); 
+}
+
+/* ── BUTONLAR & FOOTER ── */
 .btn-submit { 
     flex: 1; 
     background: var(--color-primary); 
@@ -345,40 +318,9 @@ dl dd { padding: var(--space-xs) 0 var(--space-xs) var(--space-md); color: var(-
 
 .btn-reset { flex: 1; background: #64748b; color: #fff; padding: 14px; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
 
-/* ── FOOTER ── */
 footer { border-top: 1px solid var(--color-border); text-align: center; padding: var(--space-md); margin-top: auto; background: var(--color-surface); }
-footer p { color: var(--color-text-muted); font-size: 0.85rem; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-/* Radyo butonlarının tüm satırı kaplamasını engelle */
-.contact-container input[type="radio"] {
-    width: auto !important; /* 100% kuralını devre dışı bırakır */
-    margin-bottom: 0;       /* Alt boşluğu sıfırla */
-    cursor: pointer;
-    accent-color: var(--color-primary); /* Seçildiğinde senin mavi tonunu alır */
-}
-
-/* Form kutusu içindeki her bir satırı hizala */
-.form-group-box {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 15px;
-    background: #fcfcfc;
-    border: 1px solid var(--color-border);
-}
-
-/* Input ve Label'ı dikeyde tam ortala */
-.radio-item {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Buton ile yazı arasındaki boşluk */
-}
-
-.inline-label {
-    margin: 0 !important; /* Etiketin kendi boşluklarını sıfırla */
-    cursor: pointer;
 }
