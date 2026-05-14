@@ -1,4 +1,4 @@
-/* ── RESTORED: TÜM EFEKTLER VE MAVİ TEMA ── */
+/* ── RESTORED & BLUE THEME FINAL ── */
 :root {
     --color-bg: #f4f7fa;
     --color-surface: #ffffff;
@@ -43,7 +43,7 @@ body {
     flex-direction: column;
 }
 
-/* ── HEADER ── */
+/* ── HEADER & ANIMATIONS ── */
 header {
     padding: var(--space-xl) var(--space-md) var(--space-lg);
     text-align: center;
@@ -73,17 +73,7 @@ header::after {
 
 .logo-dot { color: var(--color-accent); }
 
-.tagline {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 300;
-    margin-top: var(--space-xs);
-    animation: fadeIn 0.8s ease-out 0.2s both;
-}
-
-/* ── NAV ── */
+/* ── NAV (Transition Restored) ── */
 nav {
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
@@ -109,24 +99,11 @@ nav a {
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    transition: color var(--transition);
+    transition: all var(--transition); /* Transition geri geldi */
     position: relative;
 }
 
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 20px;
-    height: 2px;
-    background: var(--color-primary);
-    transition: transform var(--transition);
-}
-
 nav a:hover, nav a.active { color: var(--color-primary); }
-nav a:hover::after, nav a.active::after { transform: translateX(-50%) scaleX(1); }
 
 /* ── MAIN ── */
 main {
@@ -137,27 +114,7 @@ main {
     padding: var(--space-xl) var(--space-md);
 }
 
-.page-header { margin-bottom: var(--space-xl); }
-
-.label {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin-bottom: var(--space-xs);
-}
-
-h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
-    color: var(--color-dark);
-    margin-bottom: var(--space-md);
-    line-height: 1.2;
-}
-
-/* ── GRID CARDS & EFFECTS ── */
+/* ── GRID CARDS (Effects & Transitions Restored) ── */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -172,62 +129,18 @@ h2 {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-lg) var(--space-md);
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    transition: all var(--transition); /* Transition geri geldi */
     position: relative;
     overflow: hidden;
 }
 
-.grid-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 3px;
-    background: var(--color-primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition);
-}
-
 .grid-card:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 12px 40px rgba(26, 115, 232, 0.1); 
-    border-color: transparent; 
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 40px rgba(26, 115, 232, 0.12); 
+    border-color: var(--color-primary); 
 }
 
-.grid-card:hover::before { transform: scaleX(1); }
-
-.card-num {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    color: var(--color-border);
-    display: block;
-    margin-bottom: var(--space-sm);
-    transition: color var(--transition);
-}
-
-.grid-card:hover .card-num { color: var(--color-primary); }
-
-/* ── BLOCKQUOTE & TIMELINE ── */
-blockquote {
-    margin: var(--space-xl) 0;
-    padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-xl);
-    border-left: 3px solid var(--color-primary);
-    background: var(--color-primary-light);
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.2rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    position: relative;
-}
-
-.timeline-dot {
-    position: absolute; left: -25px; top: 7px;
-    width: 11px; height: 11px; border-radius: 50%;
-    border: 2px solid var(--color-primary); background: var(--color-bg);
-}
-
-/* ── CONTACT TILES & GRID ── */
+/* ── CONTACT GRID (KUTU GÖRÜNÜMÜ TAMİR EDİLDİ) ── */
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -241,22 +154,38 @@ blockquote {
     border-radius: var(--radius-lg);
     padding: var(--space-lg) var(--space-md);
     text-align: center;
-    transition: all var(--transition);
+    transition: all var(--transition); /* Transition geri geldi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-tile:hover { 
     border-color: var(--color-primary); 
-    transform: translateY(-2px); 
-    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.08);
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 30px rgba(26, 115, 232, 0.1);
 }
 
 .tile-icon {
-    font-size: 2.2rem;
-    display: block;
+    font-size: 2.4rem;
     margin-bottom: var(--space-sm);
+    display: block;
+    transition: transform var(--transition);
 }
 
-/* ── FORM & RADIO FIX ── */
+.contact-tile:hover .tile-icon {
+    transform: scale(1.1);
+}
+
+.contact-tile a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+/* ── FORM & CONTAINER ── */
 .contact-container {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -264,8 +193,6 @@ blockquote {
     padding: var(--space-lg);
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
-
-.contact-container label { display: block; font-weight: 600; margin-bottom: 8px; }
 
 .contact-container input:not([type="radio"]),
 .contact-container select,
@@ -276,28 +203,40 @@ blockquote {
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     background-color: var(--color-bg);
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-/* Radyo Butonlarını Korumaya Al */
+.contact-container input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* ── RADIO BUTTON FIX (İZOLE EDİLDİ) ── */
 .form-group-box { background: #fcfcfc; padding: 15px; margin-bottom: var(--space-md); border-radius: var(--radius); border: 1px solid var(--color-border); }
-
-.radio-item { display: flex !important; align-items: center !important; gap: 8px; margin-bottom: 8px; }
-
-.radio-item input[type="radio"] { 
-    width: auto !important; 
-    margin: 0 !important; 
-    cursor: pointer; 
-}
-
+.radio-item { display: flex !important; align-items: center !important; gap: 10px; margin-bottom: 8px; }
+.radio-item input[type="radio"] { width: auto !important; margin: 0 !important; cursor: pointer; }
 .radio-item label { margin-bottom: 0 !important; font-weight: 400 !important; cursor: pointer; }
 
-/* ── BUTTONS ── */
+/* ── BUTTONS (Transitions Restored) ── */
 .form-buttons { display: flex; gap: 15px; }
-.btn-submit { flex: 1; background: var(--color-primary); color: #fff; padding: 14px; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-.btn-reset { flex: 1; background: #dc3545; color: #fff; padding: 14px; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; }
-.btn-submit:hover { opacity: 0.9; }
+.btn-submit { 
+    flex: 1; 
+    background: var(--color-primary); 
+    color: #fff; 
+    padding: 14px; 
+    border: none; 
+    border-radius: var(--radius); 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: all var(--transition); 
+}
+.btn-submit:hover { background: var(--color-primary-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2); }
 
-/* ── FOOTER & ANIMATIONS ── */
+.btn-reset { flex: 1; background: #dc3545; color: #fff; padding: 14px; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer; transition: all var(--transition); }
+.btn-reset:hover { background: #bb2d3b; transform: translateY(-2px); }
+
+/* ── FOOTER ── */
 footer { border-top: 1px solid var(--color-border); text-align: center; padding: var(--space-md); margin-top: auto; background: var(--color-surface); }
 
 @keyframes fadeIn {
@@ -305,10 +244,6 @@ footer { border-top: 1px solid var(--color-border); text-align: center; padding:
     to { opacity: 1; transform: translateY(0); }
 }
 
-.fade-observe { opacity: 0; transform: translateY(16px); transition: all 0.5s ease-out; }
-.fade-observe.visible { opacity: 1; transform: translateY(0); }
-
-/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
     .grid, .contact-grid { grid-template-columns: 1fr; }
 }
